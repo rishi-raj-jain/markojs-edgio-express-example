@@ -9,8 +9,6 @@ module.exports = async () => {
   builder.clearPreviousBuildOutput();
   await builder.exec("npm run build");
   builder.addJSAsset(join(appDir, "dist"));
-  builder.removeSync(join(builder.jsDir, "dist", "assets"));
-  builder.addJSAsset(join(appDir, "index.js"));
   await builder.build();
   // Determine the node_modules to include
   let dictNodeModules = await getNodeModules(join(appDir, "index.js"));
@@ -21,6 +19,7 @@ module.exports = async () => {
       console.log(e);
     }
   });
+  builder.removeSync(join(builder.jsDir, "dist", "assets"));
   builder.writeFileSync(
     join(builder.jsDir, "__backends__", "package.json"),
     JSON.stringify({ type: "commonjs" })
