@@ -1,0 +1,39 @@
+{
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "build": "rimraf dist && npm run build:server && npm run build:client",
+    "build:client": "cross-env NODE_ENV=production vite build",
+    "build:server": "cross-env NODE_ENV=production vite build --ssr src/index.js",
+    "dev": "node --enable-source-maps index.js",
+    "dev:inspect": "node --inspect --enable-source-maps index.js",
+    "start": "cross-env NODE_ENV=production node --enable-source-maps index.js"
+  },
+  "name": "markojs-edgio-example",
+  "description": "Sample app that demonstrates the power of building UI components using Marko, Vite, and Express",
+  "version": "1.0.0",
+  "dependencies": {
+    "@edgio/express": "^6.1.1",
+    "@marko/express": "^2.0.0",
+    "@vercel/nft": "^0.22.6",
+    "compression": "^1.7.4",
+    "express": "^4.18.1",
+    "marko": "^5.21.3",
+    "raptor-pubsub": "^1.0.5"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^6.1.1",
+    "@edgio/core": "^6.1.1",
+    "@edgio/devtools": "^6.1.1",
+    "@edgio/prefetch": "^6.1.1",
+    "@marko/compiler": "^5.22.1",
+    "@marko/vite": "^2.3.4",
+    "cross-env": "^7.0.3",
+    "marked": "^4.0.18",
+    "rimraf": "^3.0.2",
+    "vite": "^3.0.3"
+  },
+  "private": true,
+  "type": "module"
+}
